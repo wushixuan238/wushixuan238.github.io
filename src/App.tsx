@@ -229,8 +229,27 @@ function App() {
           </section>
         </div>
 
-        {/* Step 5 (Footer) will go here */}
+        {/* FOOTER COMMAND INPUT */}
+        <footer className="bg-black/90 border-t border-neutral-800 h-10 flex items-center px-6 shrink-0">
+          <div className="flex items-center gap-3 w-full font-mono text-[11px]">
+            <span className="text-emerald-400">root@monolith:~$</span>
+            <div className="flex-1 flex items-center">
+              <span className="text-on-surface">run build --production</span>
+              <span className="w-2 h-4 bg-primary-container ml-1 blink shadow-[0_0_5px_#00FFC3]"></span>
+            </div>
+            <div className="flex gap-6 text-neutral-600 font-mono text-[10px] uppercase tracking-widest">
+              <span className="hover:text-emerald-400 cursor-pointer transition-colors">GITHUB</span>
+              <span className="hover:text-emerald-400 cursor-pointer transition-colors">SOURCE</span>
+              <span className="text-emerald-400 underline decoration-emerald-500/50">STATUS</span>
+            </div>
+          </div>
+        </footer>
       </main>
+
+      {/* FOOTER COPYRIGHT */}
+      <div className="fixed bottom-4 right-6 text-[10px] font-mono text-neutral-600 uppercase tracking-widest">
+        ©2024 CORE_TERMINAL
+      </div>
     </div>
   );
 }
