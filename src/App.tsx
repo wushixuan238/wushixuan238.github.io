@@ -157,13 +157,12 @@ function Home() {
                   {/* LEFT PANEL: IDENTITY */}
                   <section className="w-1/3 p-8 flex flex-col gap-6 overflow-y-auto">
                     {/* PROFILE HEADSHOT */}
-                    <div className="relative w-full aspect-square grayscale group shrink-0 rounded-sm overflow-hidden">
+                    <div className="relative w-full aspect-square group shrink-0 rounded-sm overflow-hidden border border-neutral-200/50">
                       <img
                         alt="yujunpan"
-                        className="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity"
+                        className="object-cover w-full h-full opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                         src={profileImg}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#FAF9F6] to-transparent"></div>
                     </div>
 
                     {/* KEY-VALUE PAIRS */}
