@@ -1,8 +1,65 @@
+import React, { useEffect, useRef } from 'react';
 import { Minus, Square, X } from "lucide-react";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { SiGmail } from "react-icons/si";
 import { GitHubCalendar } from "react-github-calendar";
+import { gsap } from 'gsap';
+import { TextPlugin } from 'gsap/TextPlugin';
 import profileImg from "./assets/profile.jpg";
+
+gsap.registerPlugin(TextPlugin);
+
+function AnimatedBio() {
+  const p1_1 = useRef(null);
+  const p1_2 = useRef(null);
+  const p1_3 = useRef(null);
+  const p1_4 = useRef(null);
+  const p1_5 = useRef(null);
+
+  const p2_1 = useRef(null);
+  const p2_2 = useRef(null);
+  const p2_3 = useRef(null);
+  const p2_4 = useRef(null);
+  const p2_5 = useRef(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline();
+    tl.to(p1_1.current, { duration: 1.2, text: "I'm a product engineer specializing in ", ease: "none" })
+      .to(p1_2.current, { duration: 0.6, text: "distributed systems", ease: "none" })
+      .to(p1_3.current, { duration: 0.2, text: " and ", ease: "none" })
+      .to(p1_4.current, { duration: 0.8, text: "high-precision UI engineering", ease: "none" })
+      .to(p1_5.current, { duration: 1.5, text: ". I architect the void, building robust networks and minimalist interfaces.", ease: "none" })
+      .to(p2_1.current, { duration: 0.4, text: "Feel free to ", ease: "none" }, "+=0.3")
+      .to(p2_2.current, { duration: 0.4, text: "browse around", ease: "none" })
+      .to(p2_3.current, { duration: 0.1, text: " or ", ease: "none" })
+      .to(p2_4.current, { duration: 0.4, text: "get in touch", ease: "none" })
+      .to(p2_5.current, { duration: 0.6, text: " and thanks for stopping by.", ease: "none" });
+  }, []);
+
+  return (
+    <div>
+      <div className="text-[17px] leading-[1.8]">
+        <p>
+          <span ref={p1_1}></span>
+          <strong ref={p1_2} className="text-white font-medium"></strong>
+          <span ref={p1_3}></span>
+          <strong ref={p1_4} className="text-white font-medium"></strong>
+          <span ref={p1_5}></span>
+        </p>
+      </div>
+
+      <div className="text-[17px] leading-[1.8] mt-10">
+        <p>
+          <span ref={p2_1}></span>
+          <span ref={p2_2} className="text-white cursor-pointer hover:underline underline-offset-4 decoration-neutral-500 transition-all font-medium"></span>
+          <span ref={p2_3}></span>
+          <a href="mailto:wushixuan238@gmail.com" ref={p2_4} className="text-white hover:underline underline-offset-4 decoration-neutral-500 transition-all font-medium"></a>
+          <span ref={p2_5}></span>
+        </p>
+      </div>
+    </div>
+  );
+}
 
 function App() {
   return (
@@ -10,19 +67,7 @@ function App() {
       <div className="flex flex-col lg:flex-row lg:items-stretch items-center justify-between gap-12 lg:gap-16 xl:gap-24 w-full max-w-[1400px]">
         {/* LEFT COLUMN: PERSONAL INTRODUCTION */}
         <div className="flex flex-col justify-between w-full max-w-md shrink-0 text-neutral-400">
-          <div>
-            <div className="text-[17px] leading-[1.8]">
-              <p>
-                I'm a product engineer specializing in <strong className="text-white font-medium">distributed systems</strong> and <strong className="text-white font-medium">high-precision UI engineering</strong>. I architect the void, building robust networks and minimalist interfaces.
-              </p>
-            </div>
-
-            <div className="text-[17px] leading-[1.8] mt-10">
-              <p>
-                Feel free to <span className="text-white cursor-pointer hover:underline underline-offset-4 decoration-neutral-500 transition-all font-medium">browse around</span> or <a href="mailto:wushixuan238@gmail.com" className="text-white hover:underline underline-offset-4 decoration-neutral-500 transition-all font-medium">get in touch</a> and thanks for stopping by.
-              </p>
-            </div>
-          </div>
+          <AnimatedBio />
 
           <div className="flex items-center gap-6 mt-12 lg:mt-0">
             <a href="https://github.com/wushixuan238" target="_blank" rel="noreferrer" className="text-neutral-500 hover:text-white transition-colors duration-300">
@@ -286,7 +331,7 @@ function App() {
         style={{ fontFamily: "'Caveat', cursive", fontSize: '1.0rem', fontWeight: 'bold' }}
       >
         <div className="inline-flex items-center transition-colors duration-300 group-hover:text-emerald-400 relative">
-          "yujunpan@2026:~$"
+          "yujun@2026:~$"
           <span className="absolute -right-3 top-0 hidden text-emerald-400 group-hover:inline-block blink font-mono">
             _
           </span>
