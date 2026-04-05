@@ -11,6 +11,7 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 
 import profileImg from "./assets/profile.jpg";
 import Resume from './components/Resume';
+import Archive from './components/Archive';
 import { SPRING_PRESETS } from './lib/animation';
 
 gsap.registerPlugin(TextPlugin);
@@ -288,9 +289,10 @@ function Home() {
                   whoami: "guest@yujun",
                   date: new Date().toString(),
                   status: "ALL SUBSYSTEMS GREEN",
-                  help: "Available commands: whoami, date, status, help, clear, resume",
+                  help: "Available commands: whoami, date, status, help, clear, resume, archive",
                   "monolith start": () => setIsMinimized(false), // Secret expand command!
                   resume: () => navigate('/resume'),
+                  archive: () => navigate('/archive'),
                 }}
                 prompt={<span className="text-[#324A49] font-mono text-[11px] font-bold">root@yujun:~$</span>}
                 theme="monolithTheme"
@@ -342,6 +344,7 @@ function App() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/resume" element={<Resume />} />
+        <Route path="/archive" element={<Archive />} />
       </Routes>
     </AnimatePresence>
   );
