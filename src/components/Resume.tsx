@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Share2 } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ResumeSheet } from './resume/ResumeSheet';
 import { resumeData } from '../data/resume-data';
@@ -18,32 +18,36 @@ const Resume: React.FC = () => {
       transition={SPRING_PRESETS.smooth}
       className="min-h-screen bg-[#F0EFED] text-[#1A1C19] font-body selection:bg-[#324A49] selection:text-white"
     >
-      {/* NAVIGATION BAR */}
-      <nav className="fixed top-0 left-0 right-0 h-16 bg-[#F0EFED]/80 backdrop-blur-md border-b border-neutral-200/50 flex items-center justify-between px-6 z-50">
-        <div className="flex items-center gap-4">
-          <button
-            onClick={() => navigate('/')}
-            className="p-2 hover:bg-neutral-200/50 rounded-full transition-colors group"
-            aria-label="Back to home"
-          >
-            <ArrowLeft size={20} className="group-active:scale-90 transition-transform" />
-          </button>
-          <div className="h-4 w-[1px] bg-neutral-300" />
-          <span className="font-mono text-xs tracking-widest uppercase font-bold text-neutral-500">
-            RESUME_VIEWER
-          </span>
-        </div>
-      </nav>
-
-      {/* RESUME CONTENT */}
-      <main className="pt-32 pb-24 flex justify-center">
+      {/* MAIN CONTENT AREA */}
+      <main className="pt-20 pb-32 flex justify-center">
         <div className="shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-sm overflow-hidden bg-white">
           <ResumeSheet data={resumeData} />
         </div>
       </main>
 
-      {/* FOOTER */}
-      <footer className="pb-12 text-center">
+      {/* FLOATING NAVIGATION */}
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ ...SPRING_PRESETS.smooth, delay: 0.2 }}
+          className="flex items-center gap-2 p-1 bg-[#1A1C19]/90 backdrop-blur-md rounded-full shadow-lg border border-white/10"
+        >
+          <button
+            onClick={() => navigate('/')}
+            className="flex items-center gap-2 px-6 py-3 text-[#FAF9F6] hover:bg-white/10 rounded-full transition-all group"
+            aria-label="Back to home"
+          >
+            <ArrowLeft size={18} className="group-active:scale-90 transition-transform" />
+            <span className="font-mono text-[10px] tracking-widest uppercase font-bold">
+              Return
+            </span>
+          </button>
+        </motion.div>
+      </div>
+
+      {/* FOOTER METADATA */}
+      <footer className="pb-12 text-center opacity-40">
         <p className="font-mono text-[10px] text-neutral-400 uppercase tracking-[0.2em]">
           End of Document — Generated at {new Date().toLocaleDateString()}
         </p>
