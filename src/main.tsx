@@ -1,9 +1,11 @@
-import React, { StrictMode, useState, useEffect } from 'react'
+import { StrictMode, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { Greeting } from './components/Greeting.tsx'
 import { TerminalContextProvider } from 'react-terminal'
+
+import { BrowserRouter } from 'react-router-dom'
 
 function Root() {
   const [showGreeting, setShowGreeting] = useState(true);
@@ -34,8 +36,10 @@ function Root() {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <TerminalContextProvider>
-      <Root />
-    </TerminalContextProvider>
+    <BrowserRouter>
+      <TerminalContextProvider>
+        <Root />
+      </TerminalContextProvider>
+    </BrowserRouter>
   </StrictMode>,
 )

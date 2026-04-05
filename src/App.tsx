@@ -7,8 +7,11 @@ import { ReactTerminal } from "react-terminal";
 import { gsap } from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 
 import profileImg from "./assets/profile.jpg";
+import Resume from './components/Resume';
+import { SPRING_PRESETS } from './lib/animation';
 
 gsap.registerPlugin(TextPlugin);
 
@@ -16,27 +19,25 @@ function AnimatedBio() {
   const p1_1 = useRef(null);
   const p1_2 = useRef(null);
   const p1_3 = useRef(null);
-  const p1_4 = useRef(null);
-  const p1_5 = useRef(null);
 
   const p2_1 = useRef(null);
   const p2_2 = useRef(null);
   const p2_3 = useRef(null);
   const p2_4 = useRef(null);
   const p2_5 = useRef(null);
+  const p2_6 = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline();
-    tl.to(p1_1.current, { duration: 1.2, text: "I'm a product engineer specializing in ", ease: "none" })
-      .to(p1_2.current, { duration: 0.6, text: "distributed systems", ease: "none" })
-      .to(p1_3.current, { duration: 0.2, text: " and ", ease: "none" })
-      .to(p1_4.current, { duration: 0.8, text: "high-precision UI engineering", ease: "none" })
-      .to(p1_5.current, { duration: 1.5, text: ". I architect the void, building robust networks and minimalist interfaces.", ease: "none" })
-      .to(p2_1.current, { duration: 0.4, text: "Feel free to ", ease: "none" }, "+=0.3")
-      .to(p2_2.current, { duration: 0.4, text: "browse around", ease: "none" })
-      .to(p2_3.current, { duration: 0.1, text: " or ", ease: "none" })
-      .to(p2_4.current, { duration: 0.4, text: "get in touch", ease: "none" })
-      .to(p2_5.current, { duration: 0.6, text: " and thanks for stopping by.", ease: "none" });
+    tl.to(p1_1.current, { duration: 1.0, text: "Mostly working on backend logic and ", ease: "none" })
+      .to(p1_2.current, { duration: 0.4, text: "AI agents", ease: "none" })
+      .to(p1_3.current, { duration: 2.0, text: ". Lately, I've been spending time on frontend to bring my ideas to life. Just trying to build things that run quietly and work well.", ease: "none" })
+      .to(p2_1.current, { duration: 1.2, text: "Thanks for stopping by my workspace. The terminal below is live—run a command if you want to look around. ", ease: "none" }, "+=0.3")
+      .to(p2_2.current, { duration: 0.4, text: "Feel free to ", ease: "none" })
+      .to(p2_3.current, { duration: 0.4, text: "browse around", ease: "none" })
+      .to(p2_4.current, { duration: 0.1, text: " or ", ease: "none" })
+      .to(p2_5.current, { duration: 0.4, text: "get in touch", ease: "none" })
+      .to(p2_6.current, { duration: 0.6, text: " and thanks for stopping by.", ease: "none" });
   }, []);
 
   return (
@@ -44,31 +45,37 @@ function AnimatedBio() {
       <div className="text-[17px] leading-[1.8]">
         <p>
           <span ref={p1_1}></span>
-          <strong ref={p1_2} className="text-[#1A1C19] font-medium"></strong>
+          <strong ref={p1_2} className="text-[#1A1C19] font-bold"></strong>
           <span ref={p1_3}></span>
-          <strong ref={p1_4} className="text-[#1A1C19] font-medium"></strong>
-          <span ref={p1_5}></span>
         </p>
       </div>
 
       <div className="text-[17px] leading-[1.8] mt-10">
         <p>
           <span ref={p2_1}></span>
-          <span ref={p2_2} className="text-[#1A1C19] cursor-pointer hover:underline underline-offset-4 decoration-neutral-500 transition-all font-medium"></span>
-          <span ref={p2_3}></span>
-          <a href="mailto:wushixuan238@gmail.com" ref={p2_4} className="text-[#1A1C19] hover:underline underline-offset-4 decoration-neutral-500 transition-all font-medium"></a>
-          <span ref={p2_5}></span>
+          <span ref={p2_2}></span>
+          <span ref={p2_3} className="text-[#1A1C19] cursor-pointer hover:underline underline-offset-4 decoration-neutral-500 transition-all font-medium"></span>
+          <span ref={p2_4}></span>
+          <a href="mailto:boyisolatin7@163.com" ref={p2_5} className="text-[#1A1C19] hover:underline underline-offset-4 decoration-neutral-500 transition-all font-medium"></a>
+          <span ref={p2_6}></span>
         </p>
       </div>
     </div>
   );
 }
 
-function App() {
+function Home() {
   const [isMinimized, setIsMinimized] = useState(false);
+  const navigate = useNavigate();
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-6 lg:p-12 font-body bg-[#FAF9F6] text-[#1A1C19] overflow-hidden relative">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 1.02, filter: "blur(10px)" }}
+      transition={SPRING_PRESETS.smooth}
+      className="flex items-center justify-center h-screen p-6 lg:p-12 font-body bg-[#FAF9F6] text-[#1A1C19] overflow-hidden relative"
+    >
       <motion.div
         layout
         className={`flex w-full max-w-[1400px] ${isMinimized
@@ -122,10 +129,7 @@ function App() {
                 <header className="bg-transparent text-[#324A49] font-headline tracking-tighter uppercase text-xs flex justify-between items-center h-8 px-4 w-full z-10 shrink-0">
                   <div className="flex items-center gap-4">
                     <span className="font-mono text-[#324A49] font-bold tracking-[0.2em]">
-                      SESSION: GUEST
-                    </span>
-                    <span className="text-neutral-500 font-mono">
-                      ~/workspace/yujunpan.space
+                      STATUS: DEBUGGING_IN_PRODUCTION
                     </span>
                   </div>
                   <div className="flex gap-4">
@@ -170,14 +174,7 @@ function App() {
                       </div>
                       <div className="flex justify-between py-1">
                         <span className="text-neutral-500">NODE_ID</span>
-                        <span className="text-neutral-900">EVD-992-X</span>
-                      </div>
-                      <div className="flex justify-between py-1">
-                        <span className="text-neutral-500">STATUS</span>
-                        <div className="flex items-center gap-2">
-                          <span className="text-[#324A49]">OPERATIONAL</span>
-                          <span className="w-1.5 h-1.5 bg-[#324A49] rounded-full shadow-[0_0_8px_#324A49]"></span>
-                        </div>
+                        <span className="text-neutral-900">2001-04</span>
                       </div>
                     </div>
 
@@ -292,8 +289,9 @@ function App() {
                   whoami: "guest@yujun",
                   date: new Date().toString(),
                   status: "ALL SUBSYSTEMS GREEN",
-                  help: "Available commands: whoami, date, status, help, clear",
+                  help: "Available commands: whoami, date, status, help, clear, resume",
                   "monolith start": () => setIsMinimized(false), // Secret expand command!
+                  resume: () => navigate('/resume'),
                 }}
                 prompt={<span className="text-[#324A49] font-mono text-[11px] font-bold">root@yujun:~$</span>}
                 theme="monolithTheme"
@@ -310,7 +308,7 @@ function App() {
                 welcomeMessage={
                   !isMinimized ? (
                     <div className="text-neutral-500 font-mono text-[11px] mb-2 leading-relaxed">
-                      Monolith Terminal Service v1.0.4 initialized.<br />
+                      Local development server running on port 2026.<br />
                       Type 'help' for available commands.
                     </div>
                   ) : null
@@ -333,7 +331,20 @@ function App() {
           </span>
         </div>
       </div>
-    </div>
+    </motion.div>
+  );
+}
+
+function App() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Home />} />
+        <Route path="/resume" element={<Resume />} />
+      </Routes>
+    </AnimatePresence>
   );
 }
 
