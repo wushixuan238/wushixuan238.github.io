@@ -5,7 +5,7 @@ import App from './App.tsx'
 import { Greeting } from './components/Greeting.tsx'
 import { TerminalContextProvider } from 'react-terminal'
 
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 
 function Root() {
   const [showGreeting, setShowGreeting] = useState(true);
@@ -36,10 +36,10 @@ function Root() {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <TerminalContextProvider>
         <Root />
       </TerminalContextProvider>
-    </BrowserRouter>
+    </HashRouter>
   </StrictMode>,
 )
