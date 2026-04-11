@@ -12,6 +12,14 @@ dist
 dist-ssr
 *.local
 
+# Environment variables (contains API keys)
+.env
+.env.local
+.env.*.local
+
+# Generated data files
+src/data/posts.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
