@@ -4,25 +4,13 @@
 
 import { type Post, type PostMeta } from '../lib/notion';
 
-let cachedPosts: Post[] = [];
+import postsData from '../data/posts.json';
+
+let cachedPosts: Post[] = (postsData as any) || [];
 
 // Load posts from JSON file
 function loadPosts(): Post[] {
-  if (cachedPosts.length > 0) {
-    return cachedPosts;
-  }
-
-  try {
-    // Try to import the generated JSON
-    const posts = require('../data/posts.json');
-    cachedPosts = Array.isArray(posts) ? posts : [];
-    return cachedPosts;
-  } catch (error) {
-    console.warn('[Posts] Could not load posts.json, falling back to empty array');
-    // In development, the file might not exist yet
-    cachedPosts = [];
-    return cachedPosts;
-  }
+  return cachedPosts;
 }
 
 // Get all posts (sorted by date descending)
