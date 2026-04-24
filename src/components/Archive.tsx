@@ -20,34 +20,29 @@ const ArchiveCard = ({
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
-      className="bg-card p-8 w-80 h-80 shadow-sm border border-border flex flex-col justify-between group hover:shadow-xl hover:border-primary/50 transition-all cursor-pointer mx-auto"
+      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      className="bg-card px-8 py-7 shadow-sm border border-border flex flex-col items-center text-center group hover:shadow-lg hover:border-primary/40 transition-all cursor-pointer mx-auto w-full"
       onClick={() => navigate(`/article/${item.slug}`)}
     >
-      <div>
-        <div className="flex justify-between items-start mb-6">
-          <span className="font-mono text-[9px] tracking-[0.2em] text-primary font-bold uppercase opacity-60">
-            {item.category}
-          </span>
-          <span className="font-mono text-[9px] text-muted-foreground">
-            {item.date}
-          </span>
-        </div>
-        <h2 className="text-2xl font-headline leading-tight mb-4 text-foreground group-hover:text-primary transition-colors">
-          {item.title}
-        </h2>
-        <p className="text-muted-foreground text-[13px] leading-relaxed font-body line-clamp-3 italic opacity-80 group-hover:opacity-100 transition-opacity">
-          "{item.excerpt}"
-        </p>
+      {/* Meta row */}
+      <div className="flex justify-center items-center gap-3 mb-5 w-full">
+        <span className="font-mono text-[9px] tracking-[0.2em] text-primary font-bold uppercase opacity-60">
+          {item.category}
+        </span>
+        <span className="w-px h-3 bg-border" />
+        <span className="font-mono text-[9px] text-muted-foreground">
+          {item.date}
+        </span>
       </div>
 
-      <div className="pt-6 border-t border-border flex justify-between items-center mt-auto">
-        <span className="font-mono text-[9px] text-muted-foreground/50">
-          {item.slug.toUpperCase()}
-        </span>
-        <div className="text-[10px] font-mono font-bold text-foreground flex items-center gap-2">
-          EXPLORE <span className="group-hover:translate-x-1 transition-transform">→</span>
-        </div>
+      {/* Title */}
+      <h2 className="text-xl font-headline leading-snug text-foreground group-hover:text-primary transition-colors mb-6">
+        {item.title}
+      </h2>
+
+      {/* CTA */}
+      <div className="text-[9px] font-mono font-bold tracking-[0.2em] text-muted-foreground group-hover:text-foreground flex items-center gap-1.5 transition-colors mt-auto">
+        EXPLORE <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
       </div>
     </motion.div>
   );
@@ -110,9 +105,6 @@ const Archive = () => {
             Documents / <span className="text-primary">{selectedCategory}</span>
           </h1>
         </div>
-        <div className="font-mono text-[10px] text-muted-foreground">
-          INDEXED_OBJECTS: {posts.length}
-        </div>
       </nav>
 
       {/* CATEGORY FILTER (FLOATING PILLS) */}
@@ -134,7 +126,7 @@ const Archive = () => {
 
       {/* GRID */}
       <main className="max-w-7xl mx-auto px-12 pt-32 pb-40">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+        <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(220px, 260px))", justifyContent: "center" }}>
           <AnimatePresence mode="popLayout">
             {posts.map((item) => (
               <ArchiveCard key={item.id} item={item} navigate={navigate} />

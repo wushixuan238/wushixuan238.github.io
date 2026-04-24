@@ -80,14 +80,13 @@ function AnimatedBio() {
           <span ref={p2_2}></span>
           <span
             ref={p2_3}
-            className="text-foreground cursor-pointer hover:underline underline-offset-4 decoration-neutral-500 transition-all font-medium"
+            className="text-foreground transition-all"
           ></span>
           <span ref={p2_4}></span>
-          <a
-            href="mailto:boyisolatin7@163.com"
+          <span
             ref={p2_5}
-            className="text-foreground hover:underline underline-offset-4 decoration-neutral-500 transition-all font-medium"
-          ></a>
+            className="text-foreground transition-all"
+          ></span>
           <span ref={p2_6}></span>
         </p>
       </div>
@@ -129,20 +128,18 @@ function Home() {
     >
       <motion.div
         layout
-        className={`flex w-full max-w-[1400px] ${
-          isMinimized
-            ? "flex-col items-center justify-center gap-16"
-            : "flex-col lg:flex-row lg:items-stretch items-center justify-between gap-12 lg:gap-16 xl:gap-24"
-        }`}
+        className={`flex w-full max-w-[1400px] ${isMinimized
+          ? "flex-col items-center justify-center gap-16"
+          : "flex-col lg:flex-row lg:items-stretch items-center justify-between gap-12 lg:gap-16 xl:gap-24"
+          }`}
       >
         {/* LEFT COLUMN: PERSONAL INTRODUCTION */}
         <motion.div
           layout
-          className={`flex flex-col justify-between shrink-0 text-foreground/85 ${
-            isMinimized
-              ? "w-full max-w-2xl text-center items-center"
-              : "w-full max-w-md"
-          }`}
+          className={`flex flex-col justify-between shrink-0 text-foreground/85 ${isMinimized
+            ? "w-full max-w-2xl text-center items-center"
+            : "w-full max-w-md"
+            }`}
         >
           <AnimatedBio />
 
@@ -179,11 +176,10 @@ function Home() {
         {/* RIGHT COLUMN: THE MONOLITH WINDOW */}
         <motion.main
           layout
-          className={`relative bg-transparent border-none flex flex-col shrink-0 ${
-            isMinimized
-              ? "w-full max-w-xl"
-              : "w-full lg:max-w-4xl aspect-[16/10] max-h-[85vh]"
-          }`}
+          className={`relative bg-transparent border-none flex flex-col shrink-0 ${isMinimized
+            ? "w-full max-w-xl"
+            : "w-full lg:max-w-4xl aspect-[16/10] max-h-[85vh]"
+            }`}
         >
           <AnimatePresence initial={false}>
             {!isMinimized && (
@@ -198,7 +194,7 @@ function Home() {
                 {/* SYSTEM TOP BAR */}
                 <header className="bg-transparent text-primary font-headline tracking-tighter uppercase text-xs flex justify-between items-center h-8 px-4 w-full z-10 shrink-0">
                   <div className="flex items-center gap-4">
-                    <span className="font-mono text-primary font-bold tracking-[0.2em]">
+                    <span className="font-body text-primary font-bold tracking-[0.2em]">
                       STATUS: DEBUGGING_IN_PRODUCTION
                     </span>
                   </div>
@@ -242,7 +238,7 @@ function Home() {
                     </div>
 
                     {/* KEY-VALUE PAIRS */}
-                    <div className="space-y-1 font-mono text-[11px] shrink-0">
+                    <div className="space-y-1 font-body text-[11px] shrink-0">
                       <div className="flex justify-between py-1">
                         <span className="text-muted-foreground">KERNEL</span>
                         <span className="text-foreground">INTJ</span>
@@ -254,44 +250,13 @@ function Home() {
                     </div>
 
                     {/* DIRECTORY NAV */}
-                    <nav className="mt-4 font-mono text-[11px] space-y-6">
+                    <nav className="mt-4 font-body text-[11px] space-y-6">
                       <div>
                         <span className="text-muted-foreground block mb-2 cursor-text">
                           $ cat profile_metadata.json
                         </span>
-                        <div className="bg-transparent text-muted-foreground leading-relaxed font-mono whitespace-pre text-[10px]">
-                          {`{\n  "focus": "ui engineering",\n  "status": "architecting"\n}`}
-                        </div>
-                      </div>
-                      <div>
-                        <span className="text-muted-foreground block mb-2">
-                          $ ls active_projects/bin
-                        </span>
-                        <div className="grid grid-cols-2 gap-2 text-primary text-[10px]">
-                          <a
-                            className="hover:bg-primary/10 p-1 border border-primary/30"
-                            href="#"
-                          >
-                            NEURAL_NET_V2
-                          </a>
-                          <a
-                            className="hover:bg-primary/10 p-1 border border-primary/30"
-                            href="#"
-                          >
-                            GLITCH_RENDER
-                          </a>
-                          <a
-                            className="hover:bg-primary/10 p-1 border border-primary/30"
-                            href="#"
-                          >
-                            MONOLITH_UI
-                          </a>
-                          <a
-                            className="hover:bg-primary/10 p-1 border border-primary/30"
-                            href="#"
-                          >
-                            VOID_PROTOCOL
-                          </a>
+                        <div className="bg-transparent text-muted-foreground leading-relaxed font-body whitespace-pre text-[10px]">
+                          {`{\n  "focus": "product engineering",\n  "status": "architecting"\n}`}
                         </div>
                       </div>
                     </nav>
@@ -302,7 +267,7 @@ function Home() {
                     {/* COMMIT HEATMAP */}
                     <div className="p-8 shrink-0">
                       <div className="flex justify-between items-end mb-4">
-                        <h2 className="font-mono text-[10px] tracking-widest text-primary uppercase font-bold">
+                        <h2 className="font-body text-[10px] tracking-widest text-primary uppercase font-bold">
                           COMMIT_ACTIVITY
                         </h2>
                       </div>
@@ -330,43 +295,37 @@ function Home() {
                       </div>
                     </div>
 
-                    {/* SYSTEM LOGS */}
-                    <div className="flex-1 overflow-y-auto p-8 pt-0 font-mono text-[11px] leading-relaxed">
+                    {/* INTERESTS & HOBBIES */}
+                    <div className="flex-1 overflow-y-auto p-8 pt-0 font-body text-[11px] leading-relaxed">
                       <div className="flex justify-between items-center mb-4 text-primary font-bold">
-                        <span className="uppercase tracking-widest text-[10px]">
-                          SYSTEM_LOGS_FEED
+                        <span className="uppercase tracking-widest text-[10px] font-body">
+                          INTERESTS
                         </span>
-                        <span className="text-[9px]">FILTER: ALL_EVENTS</span>
+                        <span className="text-[9px]">LIFESTYLE</span>
                       </div>
                       <div className="space-y-3 opacity-90">
                         <div className="flex gap-4 border-l-2 border-primary/40 pl-3">
                           <span className="text-muted-foreground/70 whitespace-nowrap">
-                            2024.05.12 14:02:11
+                            RUNNING
                           </span>
                           <span className="text-foreground">
-                            Pushed commit{" "}
-                            <span className="text-primary/80">ae992f1</span> to{" "}
-                            <span className="underline">Monolith_Core</span>
+                            Usually covering <span className="text-primary/80">5-10km</span> per session. It's my way of clearing my head after a long day of coding.
                           </span>
                         </div>
                         <div className="flex gap-4 border-l-2 border-border pl-3">
                           <span className="text-muted-foreground/70 whitespace-nowrap">
-                            2024.05.12 13:45:02
+                            MUSIC
                           </span>
                           <span className="text-muted-foreground">
-                            Automated backup sequence initiated...{" "}
-                            <span className="text-primary">SUCCESS</span>
+                            Deeply into <span className="text-primary">Shoegaze & Rock</span>. Distorted guitars and the "wall of sound" are my favorite focus filters.
                           </span>
                         </div>
                         <div className="flex gap-4 border-l-2 border-border pl-3">
                           <span className="text-muted-foreground/70 whitespace-nowrap">
-                            2024.05.12 12:21:55
+                            TRADING
                           </span>
                           <span className="text-muted-foreground">
-                            Indexing new metadata for project{" "}
-                            <span className="text-primary">
-                              VOID_PROTOCOL
-                            </span>
+                            Currently focused on <span className="text-primary">Market Trading</span>. Analyzing charts and seeking Alpha within the noise.
                           </span>
                         </div>
                       </div>
@@ -408,17 +367,22 @@ function Home() {
             >
               <ReactTerminal
                 commands={{
-                  whoami: "guest@yujun",
+                  ethos: () => {
+                    const mottos = [
+                      "因为我的骨头也是蓝的。",
+                      "Because my bones are also blue."
+                    ];
+                    return mottos[Math.floor(Math.random() * mottos.length)];
+                  },
                   date: new Date().toString(),
-                  status: "ALL SUBSYSTEMS GREEN",
-                  help: "Available commands: whoami, date, status, help, clear, resume, archive",
+                  help: "Available commands: ethos, date, help, clear, resume, archive",
                   "monolith start": () => setIsMinimized(false), // Secret expand command!
                   resume: () => navigate("/resume"),
                   archive: () => navigate("/archive"),
                 }}
                 prompt={
                   <span
-                    className="font-mono text-[11px] font-bold"
+                    className="font-body text-[11px] font-bold"
                     style={{ color: theme === "dark" ? "#FFFFFF" : "#324A49" }}
                   >
                     root@yujun:~$
