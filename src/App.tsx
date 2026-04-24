@@ -157,7 +157,7 @@ function Home() {
               <FiGithub size={24} strokeWidth={1.5} />
             </a>
             <a
-              href="https://linkedin.com/"
+              href="https://www.linkedin.com/in/yujun-pan-094756364/?locale=zh"
               target="_blank"
               rel="noreferrer"
               className="text-foreground/80 hover:text-foreground transition-colors duration-300"
