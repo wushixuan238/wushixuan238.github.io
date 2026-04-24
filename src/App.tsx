@@ -9,7 +9,7 @@ import { TextPlugin } from "gsap/TextPlugin";
 import { motion, AnimatePresence } from "framer-motion";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
-import profileImg from "./assets/thom.jpg";
+import profileImg from "./assets/joy.jpeg";
 import Resume from "./components/Resume";
 import Archive from "./components/Archive";
 import { SPRING_PRESETS } from "./lib/animation";
