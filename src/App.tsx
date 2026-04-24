@@ -305,7 +305,7 @@ function Home() {
                       </div>
                       <div className="space-y-3 opacity-90">
                         <div className="flex gap-4 border-l-2 border-primary/40 pl-3">
-                          <span className="text-muted-foreground/70 whitespace-nowrap">
+                          <span className="text-muted-foreground/70 whitespace-nowrap w-16 shrink-0">
                             RUNNING
                           </span>
                           <span className="text-foreground">
@@ -313,7 +313,7 @@ function Home() {
                           </span>
                         </div>
                         <div className="flex gap-4 border-l-2 border-border pl-3">
-                          <span className="text-muted-foreground/70 whitespace-nowrap">
+                          <span className="text-muted-foreground/70 whitespace-nowrap w-16 shrink-0">
                             MUSIC
                           </span>
                           <span className="text-muted-foreground">
@@ -321,7 +321,7 @@ function Home() {
                           </span>
                         </div>
                         <div className="flex gap-4 border-l-2 border-border pl-3">
-                          <span className="text-muted-foreground/70 whitespace-nowrap">
+                          <span className="text-muted-foreground/70 whitespace-nowrap w-16 shrink-0">
                             TRADING
                           </span>
                           <span className="text-muted-foreground">

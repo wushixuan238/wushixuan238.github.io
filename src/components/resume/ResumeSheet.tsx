@@ -20,7 +20,7 @@ export const ResumeSheet = ({
   return (
     <article
       className={cn(
-        "flex h-full flex-col gap-12 bg-white pt-10 pb-20",
+        "flex h-full flex-col gap-12 bg-white dark:bg-transparent dark:text-white pt-10 pb-20",
         !interactive && "pointer-events-none select-none",
         className
       )}
@@ -29,11 +29,11 @@ export const ResumeSheet = ({
       }}
     >
       <ResumeHeader data={data?.header} />
-      <hr className="border-neutral-100 ml-32" />
+      <hr className="border-neutral-100 dark:border-neutral-800 ml-32" />
       <ResumeExperience data={data?.experiences} />
-      <hr className="border-neutral-100 ml-32" />
+      <hr className="border-neutral-100 dark:border-neutral-800 ml-32" />
       <ResumeEducation data={data?.education} />
-      <hr className="border-neutral-100 ml-32" />
+      <hr className="border-neutral-100 dark:border-neutral-800 ml-32" />
       <ResumeSkills data={data?.skills} />
     </article>
   );

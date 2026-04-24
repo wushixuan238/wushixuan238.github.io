@@ -23,11 +23,11 @@ export const ResumeEducation = ({ data }: ResumeEducationProps) => {
             <div className="flex flex-col gap-1.5 flex-1">
               <p className="flex items-center justify-between font-medium text-[16px]">
                 <span>{item.degree}</span>
-                <span className="text-neutral-500 font-normal text-sm">
+                <span className="text-neutral-500 dark:text-neutral-400 font-normal text-sm">
                   {item.institution}, {item.years}
                 </span>
               </p>
-              <p className="text-[13px] text-neutral-600 leading-relaxed whitespace-pre-line">
+              <p className="text-[13px] text-neutral-600 dark:text-neutral-300 leading-relaxed whitespace-pre-line">
                 {item.description}
               </p>
             </div>

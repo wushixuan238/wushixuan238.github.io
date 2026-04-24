@@ -20,7 +20,7 @@ const Resume: React.FC = () => {
     >
       {/* MAIN CONTENT AREA */}
       <main className="pt-20 pb-32 flex justify-center">
-        <div className="shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-none rounded-sm overflow-hidden bg-white dark:bg-neutral-900">
+        <div className="shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-none rounded-sm overflow-hidden bg-white dark:bg-transparent">
           <ResumeSheet data={resumeData} />
         </div>
       </main>

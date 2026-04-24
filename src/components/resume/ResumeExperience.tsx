@@ -27,10 +27,10 @@ export const ResumeExperience = ({ data }: ResumeExperienceProps) => {
             )}
             <div className="flex flex-col gap-3">
               <div className="flex flex-col gap-1">
-                <p className="font-semibold text-[17px] text-neutral-900 leading-tight">
+                <p className="font-semibold text-[17px] text-neutral-900 dark:text-white leading-tight">
                   {experience.title}
                 </p>
-                <div className="flex items-center gap-2 text-[14px] text-neutral-500">
+                <div className="flex items-center gap-2 text-[14px] text-neutral-500 dark:text-neutral-400">
                    <p>{experience.company}</p>
                    <span>•</span>
                    <p className="whitespace-pre-line tracking-tight">
@@ -39,15 +39,15 @@ export const ResumeExperience = ({ data }: ResumeExperienceProps) => {
                 </div>
               </div>
               {experience.description.length > 1 ? (
-                <ul className="list-disc pl-5 space-y-1.5 marker:text-neutral-300">
+                <ul className="list-disc pl-5 space-y-1.5 marker:text-neutral-300 dark:marker:text-neutral-600">
                   {experience.description.map((description) => (
-                    <li className="text-[13px] text-neutral-600 leading-relaxed" key={description}>
+                    <li className="text-[13px] text-neutral-600 dark:text-neutral-300 leading-relaxed" key={description}>
                       {description}
                     </li>
                   ))}
                 </ul>
               ) : (
-                <p className="text-[13px] text-neutral-600 leading-relaxed">
+                <p className="text-[13px] text-neutral-600 dark:text-neutral-300 leading-relaxed">
                   {experience.description}
                 </p>
               )}
