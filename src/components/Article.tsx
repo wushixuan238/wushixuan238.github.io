@@ -12,6 +12,7 @@ const Article = () => {
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isBottomHovered, setIsBottomHovered] = useState(false);
 
   useEffect(() => {
     const fetchPost = () => {
@@ -84,22 +85,6 @@ const Article = () => {
       transition={SPRING_PRESETS.smooth}
       className="min-h-screen bg-background text-foreground overflow-y-auto selection:bg-primary/15"
     >
-      {/* Article Header */}
-      <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-border/50">
-        <div className="max-w-prose mx-auto px-8 py-6 flex items-center justify-between">
-          <button
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-primary hover:text-foreground transition-colors font-mono text-[10px] tracking-widest uppercase font-bold"
-          >
-            <ArrowLeft size={16} />
-            <span>BACK</span>
-          </button>
-          <div className="font-mono text-[9px] text-muted-foreground tracking-wider">
-            {post.category} // {post.date}
-          </div>
-        </div>
-      </header>
-
       {/* Article Content */}
       <article className="max-w-prose mx-auto px-8 py-16 text-center">
         {/* Title Section */}
@@ -204,24 +189,44 @@ const Article = () => {
             {post.content}
           </ReactMarkdown>
         </motion.div>
-
-        {/* Article Footer */}
-        <motion.footer
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="mt-20 pt-12 border-t border-border/50"
-        >
-          <div className="flex items-center justify-center">
-            <button
-              onClick={() => navigate("/archive")}
-              className="text-[11px] font-mono font-bold text-primary hover:underline underline-offset-8 transition-all"
-            >
-              ← BACK_TO_ARCHIVE
-            </button>
-          </div>
-        </motion.footer>
       </article>
+
+      {/* Hidden Hover Zone */}
+      <div 
+        className="fixed bottom-0 left-0 right-0 h-32 z-40"
+        onMouseEnter={() => setIsBottomHovered(true)}
+        onMouseLeave={() => setIsBottomHovered(false)}
+      />
+
+      {/* Floating Return Button */}
+      <AnimatePresence>
+        {isBottomHovered && (
+          <div 
+            className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50"
+            onMouseEnter={() => setIsBottomHovered(true)}
+            onMouseLeave={() => setIsBottomHovered(false)}
+          >
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 50, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="flex items-center gap-2 p-1 bg-foreground/90 dark:bg-neutral-800/90 backdrop-blur-md rounded-full shadow-lg border border-white/10"
+            >
+              <button
+                onClick={() => navigate('/archive')}
+                className="flex items-center gap-2 px-6 py-3 text-background dark:text-foreground hover:bg-white/10 rounded-full transition-all group"
+                aria-label="Back to archive"
+              >
+                <ArrowLeft size={18} className="group-active:scale-90 transition-transform" />
+                <span className="font-mono text-[10px] tracking-widest uppercase font-bold">
+                  Return
+                </span>
+              </button>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };
